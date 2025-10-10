@@ -1,57 +1,44 @@
-#GroceryApp sprint5 Studentversie  
-Dit is de startversie voor studenten voor sprint 5.  
- 
-UC15 Toevoegen THT datum aan product is compleet.  
+# GroceryApp sprint4 Studentversie  
 
-UC14 Toevoegen prijzen:  
-- Prijs toevoegen aan product class en uitbreiden constructor chain.  
-- ProductRepository --> prijsveld vullen met waarden.  
-- ProductView uitbreiden met kolom voor de prijs (header en inhoud van de tabel).      
+## De GroceryApp is een .NET MAUI applicatie voor het beheren van boodschappenlijsten en producten.
 
-UC12 Productcategoriën toevoegen --> zelfstandig uitwerken:  
-Ontwerp:
->```mermaid
->classDiagram
->direction LR
->    class Product {
->	    +int Id
->	    +string Name
->	    +int Stock
->	    +DateOnly ShelfLife
->	    +Decimal Price
->   }
->    class ProductCategory {
->	    +int Id
->	    +string Name
->	    +int ProductId
->	    +int CategoryId
->    }
->    class Category {
->	    +int Id
->	    +string Name
->    }
->
->    Product "1" -- "*" ProductCategory
->    ProductCategory "*" -- "1" Category
-> ```
-Stappenplan:  
-- Maak class Category  
-- Maak class ProductCategory  
-- Maak Interface en Repository voor Category  
-- Maak Interface en Repository voor ProductCategory  
-- Maak Interface en Service voor Category  
-- Maak Interface en Service voor ProductCategory  
-- Registreer de gemaakte Repo's en services in MauiProgramm  
-- Maak CategoriesViewModel.  
-- Maak CategoriesView.  
-- Registreer De view en het ViewModel in MauiProgramm.  
-- Maak een menu entry in de tabbar in AppShell.xaml en registreer route in AppShell.xaml.cs  
-- Maak ProductCategoriesViewModel.  
-- Maak ProductCategoriesView.  
-- Registreer De view en het ViewModel in MauiProgramm.  
-- Zorg dat de ProductCategoriesView gestart kan worden na het klikken op een Category in CategoriesView  
-- Registreer route naar ProductCategoriesView in AppShell.xaml.cs  
+De architectuur volgt MVVM en Single Responsibility Principle (SRP):
 
+Models → domeinobjecten (Product, GroceryList, Client, …)
 
+Repositories → data-opslag
 
+Services → businesslogica (bijv. BoughtProductsService)
 
+ViewModels → UI state en commands
+
+Views → XAML-schermen met databinding
+
+TestCore → unittests voor helpers, models en services
+
+## Code structuur
+
+Core/Models – domeinobjecten
+
+Core/Interfaces – contracten voor repositories en services
+
+Core/Data – implementaties van repositories
+
+Core/Services – businesslogica
+
+App/ViewModels – logica voor binding en state
+
+App/Views – XAML-pagina’s
+
+TestCore – NUnit tests
+
+## Conventies
+PascalCase: classes, properties, methods
+
+camelCase: private velden en variabelen
+
+Dependency Injection: voor services en repositories (geregistreerd in MauiProgram.cs)
+
+CommunityToolkit.Mvvm: [ObservableProperty] en [RelayCommand]
+
+LINQ: queries, sortering en filtering
