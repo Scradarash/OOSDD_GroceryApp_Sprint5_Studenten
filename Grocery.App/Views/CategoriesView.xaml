@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Grocery.App.ViewModels"
+             xmlns:m="clr-namespace:Grocery.Core.Models;assembly=Grocery.Core" 
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Grocery.App.Views.CategoriesView"
+             x:DataType="vm:CategoriesViewModel" Title="{Binding Title}">
+
+    <Border Stroke="#C49B33" StrokeThickness="4" Padding="10" Margin="10" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+        <CollectionView 
+            ItemsSource="{Binding Categories}"
+            SelectedItem="{Binding SelectedCategory}"
+            SelectionMode="Single"
+            VerticalOptions="Start">
+
+            <CollectionView.Behaviors>
+                <toolkit:EventToCommandBehavior 
+                    EventName="SelectionChanged"
+                    Command="{Binding GoToCategoryProductsCommand}"
+                    CommandParameter="{Binding SelectedCategory}" />
+            </CollectionView.Behaviors>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Category">
+                    <Grid Padding="20">
+                        <Label Text="{Binding Name}" 
+                               FontSize="Medium" 
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Border>
+</ContentPage>

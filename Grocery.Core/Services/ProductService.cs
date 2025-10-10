@@ -18,17 +18,17 @@ namespace Grocery.Core.Services
             return _productRepository.GetAll();
         }
 
+        public Product? Get(int id)
+        {
+            return _productRepository.Get(id);
+        }
+
         public Product Add(Product item)
         {
             throw new NotImplementedException();
         }
 
         public Product? Delete(Product item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product? Get(int id)
         {
             throw new NotImplementedException();
         }
