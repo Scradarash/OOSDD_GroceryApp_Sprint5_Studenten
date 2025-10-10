@@ -9,7 +9,6 @@ namespace Grocery.Core.Data.Repositories
         public ProductRepository()
         {
             products = [
-                // id, name, stock, shelfLife, price (Toegevoegd)
                 new Product(1, "Melk", 300, new DateOnly(2025, 9, 25), 1.89m),
                 new Product(2, "Kaas", 100, new DateOnly(2025, 9, 30), 4.16m),
                 new Product(3, "Brood", 400, new DateOnly(2025, 9, 12), 0.99m),
